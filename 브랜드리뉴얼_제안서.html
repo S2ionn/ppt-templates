@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>브랜드 리뉴얼 프로젝트 제안서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{--bg:#faf9f0;--blue:#c7dbf6;--green:#cdd9bd;--beige:#e9e1cf;--beige2:#f0ecdf;--blue2:#e4edf9;--green2:#e8eedd;--line:#e2ded0;--ink:#2d2d2d;--mute:#85816f;--card:#fdfcf8;--serif:'Playfair Display','Noto Serif KR',Georgia,'Times New Roman',serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#d5dcea;overflow:hidden;font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;color:var(--ink)}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:0 0}
+.sl{font-size:20px;position:absolute;inset:0;background:var(--bg);display:none;overflow:hidden;border-radius:22px}
+.sl.on{display:block}
+.a{position:absolute}
+.sb{position:absolute;left:0;top:0;bottom:0;width:204px}
+.num{position:absolute;left:48px;top:62px;font-family:var(--serif);font-size:58px;line-height:1;font-weight:400}
+.sname{position:absolute;left:48px;top:212px;font-size:20px;line-height:1.35;font-weight:700;letter-spacing:-.3px}
+.slist{position:absolute;left:44px;top:292px;font-size:20px;line-height:2.2;letter-spacing:-.8px;color:#b3afa0;letter-spacing:-.2px}
+.slist b{color:#4a473f;font-weight:600}
+.stab{position:absolute;left:166px;top:26px;width:62px;height:196px;background:var(--bg);border-radius:20px 0 0 20px}
+.vt{writing-mode:vertical-rl;font-family:var(--serif);font-size:20px;font-weight:700;color:#7d786a;position:absolute;left:14px;top:22px;letter-spacing:.5px}
+.stab .vt{left:26px;top:34px}
+.sfoot{position:absolute;left:48px;bottom:58px;font-size:20px;font-weight:700;letter-spacing:.5px;color:#6b675a}
+.brand{position:absolute;right:112px;top:98px;font-size:20px;font-weight:700;letter-spacing:.5px}
+.crumb{position:absolute;font-size:20px;color:var(--mute);top:78px}
+h2{position:absolute;top:106px;font-size:31px;line-height:1.4;font-weight:500;letter-spacing:-.8px}
+.fold{position:absolute;background:var(--c);border-radius:0 12px 12px 12px}
+.fold::before{content:"";position:absolute;left:0;top:-32px;width:var(--tw,42%);height:33px;background:var(--c);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 100%,0 100%);border-radius:10px 0 0 0}
+.fold>.tt{position:absolute;left:16px;top:-30px;font-size:20px;font-weight:700;z-index:2;white-space:nowrap}
+.bl{--c:var(--blue)}.gr{--c:var(--green)}.be{--c:var(--beige)}.be2{--c:var(--beige2)}.bl2{--c:var(--blue2)}.gr2{--c:var(--green2)}.gy{--c:#dedad0}
+.card{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.pill{display:inline-block;border-radius:999px;padding:3px 18px;font-size:20px;font-weight:700;background:var(--blue);white-space:nowrap}
+.pill.g{background:var(--green)}.pill.b{background:var(--beige)}.pill.o{background:#fff;border:1px solid var(--line);font-weight:500}
+.t{font-size:20px;line-height:1.55;color:#4a473f}
+.t2{font-size:20px;line-height:1.65;color:#5a574b}
+.h{font-size:20px;font-weight:600;color:#6b675a}
+.ln{position:absolute;background:var(--line)}
+.ph{position:absolute;overflow:hidden}
+.av{position:absolute;width:56px;height:56px}
+ul.b{list-style:none}ul.b li{font-size:20px;line-height:1.9;color:#4a473f}ul.b li::before{content:"\2022\00a0\00a0";color:#8b8571}
+.pie{position:absolute;border-radius:50%;background:conic-gradient(var(--blue) 0 50%,var(--green) 50% 80%,var(--beige) 80% 100%)}
+@page{size:1600px 900px;margin:0}
+@media print{html,body{overflow:visible;background:none}#stage{position:static;transform:none!important}.sl{display:block!important;position:relative;width:1600px;height:900px;page-break-after:always;border-radius:0}}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const A=(x,y,w,h,html,st,cls)=>`<div class="a ${cls||''}" style="left:${x}px;top:${y}px;${w!=null?`width:${w}px;`:''}${h!=null?`height:${h}px;`:''}${st||''}">${html||''}</div>`;
+const F=(c,x,y,w,h,html,tw,tt)=>`<div class="fold ${c}" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;${tw?`--tw:${tw};`:''}">${tt?`<span class="tt">${tt}</span>`:''}${html||''}</div>`;
+const C=(x,y,w,h,html,st)=>`<div class="card" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;${st||''}">${html||''}</div>`;
+const P=(t,c)=>`<span class="pill ${c||''}">${t}</span>`;
+const L=(x,y,w,h)=>`<div class="ln" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"></div>`;
+const ph=(x,y,w,h,c1,c2,r)=>`<div class="ph" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:linear-gradient(${c1} 62%,${c2} 62%);border-radius:${r==null?8:r}px"></div>`;
+const face=(x,y,s)=>`<svg class="av" style="left:${x}px;top:${y}px;${s?`width:${s}px;height:${s}px`:''}" viewBox="0 0 60 60"><circle cx="30" cy="30" r="29" fill="#fff" stroke="#e2ded0"/><ellipse cx="30" cy="34" rx="13" ry="14" fill="#f6dcc6"/><path d="M16 31Q15 13 30 13Q45 13 44 31Q38 22 30 22Q22 22 16 31Z" fill="#2a2a2a"/><circle cx="25" cy="35" r="1.6" fill="#2a2a2a"/><circle cx="35" cy="35" r="1.6" fill="#2a2a2a"/></svg>`;
+const TABP=(t,y0,c)=>`<path d="M${t+24} ${y0}Q${t} ${y0} ${t} ${y0+24}V${y0+190}C${t} ${y0+224} ${t+28} ${y0+212} ${t+28} ${y0+248}V900H1600V${y0}Z" fill="${c}"/>`;
+const SEC=[null,
+ {n:1,name:'브랜드 진단',c:'#e4edf9',nc:'#8fb2e2',l:['시장 현황','경쟁 분석','소비자 인식']},
+ {n:2,name:'핵심<br>인사이트',c:'#e8eedd',nc:'#b5cb9c',l:['핵심 문제','브랜드 방향','브랜드 정의','핵심 인사이트']},
+ {n:3,name:'브랜드 전략',c:'#f0ecdf',nc:'#cdbf9f',l:['정체성 혁신','포지셔닝 전환','통합 전략']},
+ {n:4,name:'브랜드 전략',c:'#f0ecdf',nc:'#c9c3ae',l:['핵심 실행 전략','터치포인트','VI 시스템','로드맵']}];
+SEC[4].c='#ece8da';
+function S(sec,act,crumb,title,body,left){
+  const s=SEC[sec],X=sec?320:136;
+  const side=s?`<div class="sb" style="background:${s.c}"></div><div class="num" style="color:${s.nc}">${s.n}</div><div class="sname">${s.name}</div><div class="slist">${s.l.map((t,i)=>i===act?`<b>${t}</b>`:t).join('<br>')}</div><svg class="a" style="left:0;top:0" width="240" height="320"><path d="M204 26H190Q166 26 166 50V214C166 246 204 232 204 268Z" fill="#faf9f0"/></svg><div class="vt" style="left:177px;top:60px;color:#5f5c50">Branding</div><div class="sfoot">MIRI STUDIO</div>`
+   :`<div class="sb" style="width:52px;background:var(--beige2)"></div><div class="vt" style="left:20px;top:44px">Branding</div>`;
+  return `<section class="sl">${side}<div class="brand">MIRI STUDIO</div><div class="crumb" style="left:${X}px">${crumb}</div><h2 style="left:${X}px">${title}</h2>${body}</section>`;
+}
+const slides=[];
+
+/* 1 표지 */
+slides.push(`<section class="sl">
+ <svg class="a" style="left:0;top:0" width="1600" height="900" viewBox="0 0 1600 900">${[[6,0,'#cdd9bd'],[64,18,'#e9e1cf'],[122,36,'#c7dbf6'],[180,54,'#faf9f0']].map(l=>TABP(l[0],l[1],l[2])).join('')}</svg>
+ ${[6,64,122,180].map((t,i)=>`<div class="vt" style="left:${t+20}px;top:${i*18+34}px;font-size:20px;color:#5f5c50">Branding</div>`).join('')}
+ <div class="brand" style="right:88px;top:112px">MIRI STUDIO</div>
+ <div class="a" style="left:276px;top:176px;font-size:86px;line-height:1.14;font-weight:700;letter-spacing:-4px;color:#2b2b2b">브랜드 리뉴얼<br><span style="font-weight:300">프로젝트 제안서</span></div>
+ <div class="ln" style="left:152px;right:0;top:675px;height:1px;background:#bbb7a8"></div>
+ <div class="a" style="left:276px;top:732px;font-size:20px;line-height:2.1;color:#3a372f"><b>MAIL.</b>&nbsp; contact@miridih.com<br><b>TEL.</b>&nbsp; 030-000-0000<br><b>ADD.</b>&nbsp; 미리시 미리로 미리구 7</div>
+ <div class="a" style="left:900px;top:732px;width:560px;font-size:20px;line-height:1.85;color:#4a473f">성공적인 브랜드 리뉴얼은 소비자와의 관계를 강화하고, 새로운 고객층을 유치하는 데 중요한 역할을 합니다. 브랜드의 이미지와 메시지를 현대화함으로써 소비자에게 신선한 인상을 주고, 브랜드에 대한 충성도를 높일 수 있습니다.</div>
+</section>`);
+
+/* 2 시장 변화 */
+slides.push(S(0,0,'브랜드 진단 | 시장 변화','[상품] 관련 시장,<br>무엇이 변하고 있을까?',
+ L(52,740,1548,1)+L(650,400,1,340)+L(650,400,220,1)+
+ C(870,276,600,250,`<div class="t" style="padding:48px 34px 0"><b>시장은 기능 중심에서 가치 중심으로 이동하고 있다.</b><br>소비자는 제품의 성능만이 아니라 브랜드가 주는 경험과 정서를 함께 비교한다. 구매 이후의 사용 맥락까지 고려해 브랜드를 선택하며, 이 변화는 시장 전반에서 같은 방향으로 나타난다.</div>`)+
+ A(900,262,0,0,P('시장 변화'))+
+ [['#건강과 환경','bl',160,300,175],['#프리미엄 소비 증가','gr',480,300,200],['#가치 소비','be',810,260,170],['#SNS 영향력','be',1090,260,170],['#온라인 채널','be',1370,260,170]].map(f=>F(f[1],f[2],790-f[4],f[3],f[4],`<div class="h" style="text-align:center;margin-top:${f[4]/2-10}px">${f[0]}</div>`,'30%')).join('')));
+
+/* 3 AGENDA */
+slides.push(S(0,0,'','',
+ A(136,100,400,50,'AGENDA','font-size:34px;font-weight:500;letter-spacing:-.5px')+
+ [['1','브랜드 진단','bl',['시장 환경 분석','경쟁사 현황','소비자 인식 조사'],'시장과 경쟁 구도, 소비자가 미리컴퍼니를 어떻게 보는지 진단한다.'],
+  ['2','핵심 인사이트','gr',['핵심 문제 정의','브랜드 방향','브랜드 정의'],'진단 결과에서 브랜드가 풀어야 할 핵심 과제를 도출한다.'],
+  ['3','브랜드 전략','be',['정체성 혁신','포지셔닝 전환','통합 브랜드 전략'],'새로운 브랜드 정체성과 포지셔닝, 통합 전략을 제시한다.'],
+  ['4','실행 계획','be2',['핵심 실행 전략','터치포인트별 전략','VI 시스템과 로드맵'],'전략을 실행하기 위한 과제와 일정을 단계별로 정리한다.']].map((a,i)=>
+  F(a[2],297+i*300,270,268,520,`<div style="position:absolute;left:28px;top:24px;font-family:var(--serif);font-size:44px;font-weight:500">${a[0]}</div><div style="position:absolute;left:28px;top:100px;font-size:20px;font-weight:700">${a[1]}</div><ul class="b" style="position:absolute;left:28px;top:150px;right:20px">${a[3].map(x=>`<li>${x}</li>`).join('')}</ul><div class="t2" style="position:absolute;left:28px;right:24px;bottom:28px">${a[4]}</div>`,'45%')).join('')));
+
+/* 4 시장 현황 */
+slides.push(S(1,0,'브랜드 진단 | 시장 분석','[타깃] 소비자를 둘러싼<br>라이프스타일 트렌드와 [상품] 시장 현황',
+ A(320,252,300,20,'라이프스타일 트렌드','','h')+A(920,252,300,20,'[상품] 시장 점유율','','h')+
+ [['건강 지향','성분과 안전성을 확인하는 소비가 늘고 있다','blue'],['가치 소비','신념과 맞는 브랜드를 고르는 비중이 커졌다','beige'],['일상 공간','집 안의 분위기를 가꾸는 소비가 확대되고 있다','beige']].map((r,i)=>A(320,282+i*94,550,94,`<div style="position:absolute;left:0;top:0;right:0;bottom:2px;background:var(--${r[2]});border-radius:${i==0?'12px 12px 0 0':i==2?'0 0 12px 12px':0}"></div><div class="h" style="position:absolute;left:26px;top:34px;color:#2d2d2d">${r[0]}</div><div class="t2" style="position:absolute;left:190px;top:26px;width:330px">${r[1]}</div>`)).join('')+
+ [['프리미엄','50%'],['중가','30%'],['보급형','20%']].map((r,i)=>C(920,282+i*86,330,66,`<div class="t2" style="position:absolute;left:30px;top:20px;color:#2d2d2d">${r[0]}</div><div style="position:absolute;right:30px;top:19px;font-weight:700;font-size:20px">${r[1]}</div>`,'border-radius:14px')).join('')+
+ `<div class="pie" style="left:1280px;top:276px;width:210px;height:210px"></div>`+
+ A(1420,370,50,20,'50%','font-weight:700;font-size:20px')+A(1330,415,50,20,'30%','font-size:20px')+A(1335,310,50,20,'20%','font-size:20px')+
+ C(320,600,550,190,`<div class="t" style="padding:40px 30px 0">소비자는 제품을 고를 때 기능과 가격 외에 브랜드가 주는 분위기와 경험을 함께 따진다. 이 변화는 시장 전반에서 같은 방향으로 나타난다.</div>`)+A(344,586,0,0,P('시사점'))+
+ C(920,600,570,190,`<div class="t" style="padding:40px 30px 0">프리미엄 영역이 절반을 차지하며 성장세도 가장 높다. 감성 가치를 갖춘 브랜드가 이 영역을 선점하고 있다.</div>`)+A(944,586,0,0,P('시사점','b'))));
+
+/* 5 경쟁 구도 */
+slides.push(S(1,1,'브랜드 진단 | 경쟁 분석','미리컴퍼니는 접근성과 신뢰도 높음<br>경쟁사들은 프리미엄, 대중성, 온라인 등 특화 전략으로 차별화',
+ C(320,300,570,500,'')+C(920,300,570,500,'')+
+ F('bl',420,320,340,200,`<div style="position:absolute;left:24px;top:28px;font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.15">MIRI<br>COMPANY</div>`,'40%')+
+ A(350,548,500,40,'<b style="font-size:20px">미리컴퍼니</b><div class="t2">3개 사업부, 다수 제품 라인으로 신뢰 확보</div>')+
+ A(350,650,0,0,P('강점'))+A(350,694,510,90,'<div class="t2">합리적인 가격과 안정적인 품질로 폭넓은 소비층에 접근한다. 전 연령대 생활용품 영역에서 인지도가 높다.</div>')+
+ F('be',1000,350,230,100,`<div class="h" style="padding:26px 18px">경쟁사 A</div>`,'50%')+
+ F('gy',1120,400,230,100,`<div class="h" style="padding:26px 18px">경쟁사 B</div>`,'50%')+
+ F('gr',1240,450,230,110,`<div class="h" style="padding:26px 18px">경쟁사 C</div>`,'50%')+
+ A(950,590,500,40,'<b style="font-size:20px">경쟁사 A, B, C</b><div class="t2">프리미엄, 대중성, 온라인 특화로 차별화</div>')+
+ A(950,650,0,0,P('차별점'))+A(950,694,510,90,'<div class="t2">뚜렷한 한 가지 강점으로 소비자 기억에 자리 잡고 있다. 미리컴퍼니는 이 구도에서 내세울 한 줄이 약하다.</div>')));
+
+/* 6 사업부 */
+slides.push(S(1,1,'브랜드 진단 | 브랜드 현황','미리컴퍼니는 3개 사업부로 운영되며<br>총 X개 제품 라인을 보유',
+ [['#주방용품','be2','조리도구','냄비·팬','#c9c2ad','#8f8a79','#d9d9d6','#a7a8a5'],['#욕실용품','be2','타월','타월·수납','#e3dccd','#a8a08c','#d9a9a0','#b98479'],['#생활소품','be2','디퓨저','디퓨저·소품','#d9d0b4','#b3a483','#cfc6d6','#d9b6a8']].map((c,i)=>
+  F(c[1],320+i*400,280,370,520,`${ph(20,56,330,230,c[4],c[5])}<div class="t2" style="position:absolute;left:22px;top:292px">${c[2]}</div>${ph(20,330,330,140,c[6],c[7])}<div class="t2" style="position:absolute;left:22px;top:478px">${c[3]}</div>`,'45%',c[0])).join('')));
+
+/* 7 소비자 인식 */
+slides.push(S(1,2,'브랜드 진단 | 소비자 인식','[타깃] 소비자들은 미리컴퍼니를 \'실용적이고 합리적\'이지만<br>\'감성이 부족한 브랜드\'로 인식',
+ A(320,252,500,20,'Q. 미리컴퍼니 제품을 선택하는 이유는?','','h')+A(920,252,500,20,'소비자 인식 주요 키워드','','h')+
+ L(320,278,540,1)+L(920,278,570,1)+
+ ['적당한 가격과 믿을 만한 품질 때문에 구입','어디서나 쉽게 구할 수 있어서 구입','쓰고 싶은 이유가 되는 이야기는 잘 모르겠음'].map((t,i)=>C(320,300+i*150,540,120,`<div class="t" style="position:absolute;left:110px;top:34px;width:390px">${t}</div>`)+face(344,332+i*150)).join('')+
+ `<svg class="a" style="left:920px;top:300px" width="570" height="470"><g stroke="#cfcab8" fill="none"><path d="M95 50V150M285 50V110M475 50V150"/><path d="M95 330V400M285 340V400M475 330V400"/></g></svg>`+
+ [['실용적','g',0],['합리적','o',190],['무난함','o',380]].map(c=>A(920+c[2],300,170,48,`<span class="pill ${c[1]}" style="display:block;text-align:center;border-radius:10px;padding:13px 0;font-size:20px">${c[0]}</span>`)).join('')+
+ F('bl',1040,430,330,150,`<div style="text-align:center;margin-top:62px;font-size:20px;font-weight:700">실용성</div>`,'38%')+
+ [['저렴함','o',0],['신뢰','o',190],['평범함','b',380]].map(c=>A(920+c[2],650,170,48,`<span class="pill ${c[1]}" style="display:block;text-align:center;border-radius:10px;padding:13px 0;font-size:20px">${c[0]}</span>`)).join('')));
+
+/* 8 문제 */
+slides.push(S(2,0,'핵심 인사이트 | 문제 정의','기능적 신뢰는 확보했으나<br>감성적 연결과 브랜드 경험이 부족해 성장 제한',
+ C(320,290,290,500,'')+A(345,320,240,0,P('기능적 신뢰 확보','')+'<div class="t2" style="margin-top:14px">품질과 가격에 대한 신뢰는 이미 충분히 쌓여 있다.</div>')+
+ A(322,470,286,100,'<div style="text-align:center;font-size:30px;padding-top:14px">≠</div><div class="t2" style="text-align:center">신뢰가 곧 선택의 이유는 아님</div>','background:var(--beige)')+
+ A(345,610,240,0,P('감성적 연결 부족','')+'<div class="t2" style="margin-top:14px">브랜드에 대한 애착과 이야기가 약하다.</div>')+
+ [['사례 1','재구매 이유의 한계','gr',660,['기능이 같은 대안이 나오면 쉽게 이탈한다','가격 외에 머무를 이유가 부족하다']],['사례 2','SNS 언급량 저조','be',1090,['공유하고 싶은 장면과 이야기가 적다','자발적 확산이 약해 신규 유입이 한정된다']]].map(f=>
+  F(f[2],f[3],310,400,480,`<div class="t2" style="position:absolute;left:24px;top:22px">${f[0]}</div><div style="position:absolute;left:24px;top:66px;font-size:22px;font-weight:600">${f[1]}</div>`,'35%')+
+  f[4].map((t,i)=>C(f[3]+16,430+i*170,368,140,`<div class="t2" style="position:absolute;left:24px;top:38px;width:230px">${t}</div>`)+face(f[3]+300,462+i*170)).join('')).join('')));
+
+/* 9 전환 */
+slides.push(S(2,1,'핵심 인사이트 | 브랜드 방향','미리컴퍼니는 \'기능적 신뢰\'에서<br>\'감성적 일상 동반자\'로의 전환이 필요',
+ F('be',320,290,560,330,`<div style="position:absolute;left:30px;top:30px;display:flex;gap:14px">${ph(0,0,90,90,'#cfc6ad','#8f8a79',45).replace('position:absolute','position:relative')}${ph(0,0,90,90,'#d9d9d6','#a7a8a5',45).replace('position:absolute','position:relative')}</div><div class="h" style="position:absolute;left:30px;top:200px">현재 브랜드 이미지</div><div style="position:absolute;left:30px;top:226px;font-size:20px;font-weight:600;line-height:1.4">기능 위주의 믿을 만한<br>인식에 머물러 있다</div>`,'45%')+
+ F('gr',930,290,560,330,`<div style="position:absolute;left:30px;top:30px;display:flex;gap:14px">${ph(0,0,90,90,'#d9d0b4','#b3a483',45).replace('position:absolute','position:relative')}${ph(0,0,90,90,'#cfd8c2','#9fb08d',45).replace('position:absolute','position:relative')}</div><div class="h" style="position:absolute;left:30px;top:200px">목표 브랜드 이미지</div><div style="position:absolute;left:30px;top:226px;font-size:20px;font-weight:600;line-height:1.4">일상과 감성으로 함께하는<br>브랜드로 전환한다</div>`,'45%')+
+ L(880,455,50,1)+
+ C(320,660,560,130,`<div class="t2" style="padding:38px 30px 0">품질과 가격 중심의 메시지가 중심이라, 소비자가 브랜드를 떠올릴 때 감정이 따라오지 않는다.</div>`)+A(344,646,0,0,P('현상'))+
+ C(930,660,560,130,`<div class="t2" style="padding:38px 30px 0">소비자의 하루에 스며드는 장면과 이야기를 앞세워, 신뢰 위에 애착이 쌓이는 브랜드가 된다.</div>`)+A(954,646,0,0,P('방향','g'))));
+
+/* 10 정의 */
+slides.push(S(2,2,'핵심 인사이트 | 브랜드 정의','미리컴퍼니는 기능을 넘어<br>일상과 감정에 연결되는 브랜드로 정의한다',
+ ph(320,250,210,210,'#d9d0b4','#b3a483',105).replace('overflow:hidden','overflow:hidden;border:6px solid var(--bg)')+
+ ph(320,430,210,210,'#cfd8c2','#8fa58a',105).replace('overflow:hidden','overflow:hidden;border:6px solid var(--bg)')+
+ ph(320,610,210,210,'#e3dccd','#b98479',105).replace('overflow:hidden','overflow:hidden;border:6px solid var(--bg)')+
+ [['01','일상에 스며드는 제품','매일 쓰는 물건이 하루의 기분을 바꾸도록 만든다. 사용하는 장면 하나하나에서 브랜드의 온도가 느껴지게 한다.',270],['02','감정을 건드리는 경험','제품을 쓰는 순간의 만족과 편안함을 설계한다. 구매 전후의 모든 접점에서 같은 감정을 전달한다.',470],['03','미리, 일상을 더 나답게','소비자 각자의 일상에 맞춰 곁에 머무는 브랜드가 된다.',650]].map((r,i)=>
+  A(600,r[3],40,40,r[0],'font-family:var(--serif);font-size:20px;color:#b7c4a4')+A(680,r[3]-2,700,120,`<div style="font-size:${i==2?22:20}px;font-weight:${i==2?600:500};line-height:1.7">${i==2?r[1]:r[2]}</div>${i==2?`<div class="t2" style="margin-top:4px">${r[2]}</div>`:''}`)+(i<2?L(600,r[3]+150,890,1):'')+face(1420,r[3]+(i==1?40:0)+(i==2?20:0),52)).join('')));
+
+/* 11 핵심 인사이트 */
+slides.push(S(2,3,'핵심 인사이트 | 브랜드 슬로건','핵심 인사이트:<br>기능적 신뢰를 넘어, 감성적 동반자로의 전환',
+ F('gr',320,300,360,500,`<div class="t2" style="position:absolute;left:24px;top:34px">브랜드 슬로건</div><div style="position:absolute;left:24px;top:62px;font-size:26px;font-weight:700;line-height:1.4">미리,<br>일상을 더 나답게</div>`,'45%')+
+ C(680,300,810,500,`<div style="padding:34px 38px"><div style="font-size:20px;font-weight:700;margin-bottom:10px">1. 현재 브랜드의 한계</div><ul class="b"><li>기능적 신뢰는 높지만 선택할 감정적 이유가 약하다.</li><li>제품 사양 중심의 메시지로 기억에 남는 이야기가 없다.</li></ul>
+  <div style="font-size:20px;font-weight:700;margin:26px 0 10px">2. 소비자가 원하는 것</div><ul class="b"><li>일상에서 함께하는 동반자 같은 브랜드를 원한다.</li><li>쓰는 순간의 만족과 공유할 만한 장면을 기대한다.</li></ul>
+  <div style="font-size:20px;font-weight:700;margin:26px 0 10px">3. 전환의 방향</div><ul class="b"><li>신뢰를 유지하면서 감성 가치를 더하는 방향으로 이동한다.</li><li>메시지, 경험, 접점을 하나의 이야기로 통일한다.</li></ul></div>`,'border-radius:0 14px 14px 0')));
+
+/* 12 정체성 */
+slides.push(S(3,0,'브랜드 전략 | 정체성','기능 중심 기업에서<br>감성적 일상 동반자로의 브랜드 정체성 혁신',
+ C(320,290,1170,500,'','border-radius:16px')+
+ A(322,292,340,496,`<div style="font-family:var(--serif);font-size:32px;font-weight:700;line-height:1.2;padding:46px 36px 0">MIRI<br>COMPANY</div><div class="t2" style="position:absolute;left:36px;right:30px;bottom:44px"><b>미리컴퍼니</b><br>기능적 신뢰 위에 감성적 가치를 더해 일상의 동반자로 자리 잡는다.</div>`,'background:var(--beige2);border-radius:16px 0 0 16px')+
+ [['Brand Concept','','일상을 더 나답게 만드는 감성 동반자'],['Core Values','','신뢰|일상|공감'],['Brand Personality','','따뜻한|단정한|믿음직한'],['Brand Promise','b','매일의 곁에서 작은 만족을 건넨다']].map((r,i)=>
+  A(720,322+i*118,230,0,P(r[0],r[1]),'')+A(990,320+i*118,480,50,r[2].includes('|')?`<div style="display:flex;gap:16px">${r[2].split('|').map(x=>`<span class="pill o" style="border-radius:8px;padding:10px 0;width:140px;text-align:center">${x}</span>`).join('')}</div>`:`<div class="t" style="padding-top:2px">${r[2]}</div>`)+(i<3?L(720,382+i*118,740,1):'')).join('')));
+
+/* 13 포지셔닝 */
+slides.push(S(3,1,'브랜드 전략 | 포지셔닝','기능 중심 인지도에서<br>감성 가치 중심 브랜드로의 포지셔닝 전환',
+ C(320,270,790,530,'')+
+ L(400,310,1,420)+L(400,730,660,1)+L(400,520,660,0)+`<div class="ln" style="left:730px;top:310px;width:1px;height:420px;background:var(--line)"></div>`+
+ A(404,298,200,20,'인지도','','h')+A(960,740,150,20,'감성 가치 중심','','h')+
+ [['경쟁사 A',560,330],['경쟁사 B',480,450],['경쟁사 C',820,470]].map(e=>A(e[1],e[2],130,60,`<div class="h" style="text-align:center;padding-top:18px;font-weight:500">${e[0]}</div>`,'border:1px solid #cfcab8;border-radius:50%;background:#f6f3e8')).join('')+
+ A(430,600,210,110,`<div class="h" style="text-align:center;padding-top:30px;color:#2d2d2d">현재<br>미리컴퍼니</div>`,'background:#e0ddd3;border-radius:50%')+
+ A(880,600,210,110,`<div class="h" style="text-align:center;padding-top:30px;color:#2d2d2d">목표<br>미리컴퍼니</div>`,'background:var(--beige);border-radius:50%')+
+ L(650,655,225,1)+
+ A(480,700,110,0,P('현재 위치'))+A(930,700,110,0,P('목표 위치','g'))+
+ [['현황','현재 미리컴퍼니는 기능 중심 인지도가 높고 감성 가치는 낮다.','',280],['방향','경쟁사가 비어 있는 감성 가치 영역으로 위치를 옮긴다.','',450],['목표','감성 가치 중심 브랜드로 자리 잡아 일상 동반자로 인식된다.','g',620]].map(c=>
+  C(1150,c[3],340,150,`<div class="t2" style="padding:42px 26px 0">${c[1]}</div>`)+A(1172,c[3]-14,0,0,P(c[0],c[2]))).join('')));
+
+/* 14 통합 전략 */
+slides.push(S(3,2,'브랜드 전략 | 통합 전략','미리컴퍼니가 \'일상 속 감성 파트너\'로<br>거듭나기 위한 통합 브랜딩 전략',
+ A(320,300,1170,200,`<div style="position:absolute;left:36px;top:36px;width:500px"><div class="h" style="color:#2d2d2d">VISION</div><div class="t2" style="margin-top:8px">소비자의 일상 곁에서 가장 먼저 떠오르는 감성 브랜드</div></div><div style="position:absolute;left:640px;top:36px;width:480px"><div class="h" style="color:#2d2d2d">GOAL</div><div class="t2" style="margin-top:8px">감성 인식 지표 개선과 재구매율 상승</div></div>`,'background:var(--beige);border-radius:14px')+
+ L(615,330,1,140).replace('var(--line)','x')+face(1370,262,60)+face(1428,306,56)+
+ A(320,550,500,20,'핵심 실행안 요약','','h')+L(320,584,1170,1)+
+ [['약속','일상을 더 나답게라는 브랜드 약속을 정한다'],['전략','감성 중심으로 메시지와 포지셔닝을 재정렬한다'],['이야기','제품마다 일상 장면과 이야기를 입힌다'],['접점','소비자가 만나는 모든 접점을 통일한다'],['운영','지표를 점검하며 단계적으로 개선한다']].map((c,i)=>
+  C(320+i*238,610,218,180,`<div class="t2" style="position:absolute;left:20px;right:20px;top:76px;text-align:center">${c[1]}</div>`)+A(320+i*238+59,596,100,0,P(c[0],'').replace('<span','<span style="display:block;text-align:center"'))).join('')));
+
+/* 15 3가지 전략 */
+slides.push(S(4,0,'브랜드 전략 | 핵심 전략','미리컴퍼니 브랜딩의<br>3가지 핵심 실행 전략과 구체적 액션 플랜',
+ [['전략 1','공감<br>커뮤니케이션','be',['일상 장면 중심의 콘텐츠를 제작하고 브랜드 이야기를 정리한다','감성 키워드를 정해 모든 채널의 말투를 통일한다'],['#d9d0b4','#b3a483']],
+  ['전략 2','온라인<br>채널 강화','be',['SNS 운영 체계를 만들고 소비자 참여 콘텐츠를 늘린다','구독형 소통 채널로 지속적인 관계를 만든다'],['#cfd8c2','#8fa58a']],
+  ['전략 3','터치포인트<br>구축','bl',['매장과 패키지에서 같은 브랜드 경험을 전달한다','사용 후 관리까지 이어지는 접점을 설계한다'],['#dbe6d2','#a9b79a']]].map((s,i)=>{const x=320+i*400;return F(s[2],x,290,370,240,`<div class="t2" style="position:absolute;left:24px;top:24px">${s[0]}</div><div style="position:absolute;left:24px;top:60px;font-size:25px;font-weight:600;line-height:1.35">${s[1]}</div>${ph(250,12,100,100,s[4][0],s[4][1],50).replace('overflow:hidden','overflow:hidden;border:4px solid var(--bg)')}`,'45%')+
+  s[3].map((t,j)=>C(x,510+j*136,370,126,`<div class="t2" style="padding:38px 26px 0">${t}</div>`)).join('')+A(x,786,370,12,'','background:var(--'+(i==2?'blue':'beige')+');border-radius:0 0 10px 10px')}).join('')));
+
+/* 16 터치포인트 */
+slides.push(S(4,1,'브랜드 전략 | 터치포인트','[타깃] 소비자가 미리컴퍼니를<br>경험하는 주요 터치포인트별 전략',
+ A(320,252,400,20,'핵심 터치포인트 1: 제품과 온라인','','h')+A(920,252,400,20,'핵심 터치포인트 2: 공간과 관계','','h')+
+ A(320,296,330,120,'<div class="t2">제품과 패키지는 소비자가 가장 먼저 만나는 접점이다. 브랜드 톤을 통일하고 SNS 공유가 쉬운 형태로 설계한다.</div>')+
+ A(920,296,330,120,'<div class="t2">매장과 공간, 사후 관리에서 같은 감정을 전달한다. 머무르고 싶은 경험과 이어지는 소통을 만든다.</div>')+
+ ph(680,250,200,200,'#d9cdb3','#a8957a',100)+ph(680,430,200,200,'#e0dede','#9a9a9a',100)+ph(680,610,200,200,'#cfe0dc','#8fb5ac',100)+
+ ph(1290,250,200,200,'#e3dccd','#b3a483',100)+ph(1290,430,200,200,'#b7dadb','#8cc0c2',100)+ph(1290,610,200,200,'#e8e2d6','#cfc6b0',100)+
+ [[320,490,'1단계','패키지 디자인 통일'],[320,640,'2단계','SNS 콘텐츠 운영'],[920,490,'1단계','오프라인 공간 연출'],[920,640,'2단계','멤버십 소통']].map(s=>A(s[0],s[1],0,0,P(s[2]))+C(s[0],s[1]+40,330,70,`<div class="t2" style="padding:15px 22px">${s[3]}</div>`,'border-radius:10px')).join('')));
+
+/* 17 VI */
+slides.push(S(4,2,'브랜드 전략 | VI 시스템','미리컴퍼니의 새로운 브랜드 아이덴티티를<br>시각적으로 구현하는 VI 시스템 방향성',
+ F('be',320,290,570,235,`<div class="t2" style="position:absolute;left:24px;top:22px;width:360px"><b style="font-size:20px;letter-spacing:.5px">LOGO SYSTEM</b><br>단정하고 따뜻한 워드마크를 기본으로 하고, 다양한 규격에 맞춰 활용한다.</div><div style="position:absolute;right:28px;bottom:22px;font-family:var(--serif);font-size:32px;font-weight:700">LOGO</div>`,'40%')+
+ F('be',920,290,570,235,`<div class="t2" style="position:absolute;left:24px;top:22px;width:360px"><b style="font-size:20px;letter-spacing:.5px">COLOR SYSTEM</b><br>차분한 파스텔 3색을 주조색으로 쓰고 포인트 색을 더한다.</div><div style="position:absolute;right:28px;bottom:22px;display:flex;gap:6px"><div style="width:62px;height:62px;border-radius:50%;background:#e3d3ae"></div><div style="width:62px;height:62px;border-radius:50%;background:#f1b98f"></div><div style="width:62px;height:62px;border-radius:50%;background:#c3d5ac"></div></div>`,'40%')+
+ F('gr',320,570,570,235,`<div class="t2" style="position:absolute;left:24px;top:22px;width:360px"><b style="font-size:20px;letter-spacing:.5px">TYPOGRAPHY SYSTEM</b><br>가독성이 높은 산세리프와 세리프를 조합해 격을 높인다.</div><div style="position:absolute;right:28px;bottom:22px;font-family:var(--serif);font-size:30px;font-weight:700">HEADLINE</div>`,'40%')+
+ F('bl',920,570,570,235,`<div class="t2" style="position:absolute;left:24px;top:22px;width:360px"><b style="font-size:20px;letter-spacing:.5px">IMAGE &amp; GRAPHIC</b><br>일상의 장면을 담은 자연광 이미지를 사용한다.</div>${ph(340,110,90,90,'#cfe0dc','#8fb5ac',45)}${ph(405,120,90,90,'#e0d6c2','#b3a483',45)}${ph(468,100,90,90,'#efd9c8','#d9b6a8',45)}`,'40%')));
+
+/* 18 로드맵 */
+const gcols=[['1~2','개월'],['3~4','개월'],['5~8','개월'],['9~12','개월']];
+slides.push(S(4,3,'브랜드 전략 | 로드맵','미리컴퍼니 브랜딩을<br>체계적으로 실행하기 위한 단계별 로드맵',
+ F('be',320,300,280,490,`<div class="t2" style="position:absolute;left:24px;top:22px;font-weight:700;font-size:20px">ROADMAP</div>`,'40%')+
+ ['브랜드 진단 및 조사','정체성 · 전략 수립','VI 시스템 개발','채널 · 접점 구축','성과 측정 및 개선'].map((t,i)=>A(344,360+i*82,232,48,`<div class="t2" style="text-align:center;padding-top:13px;color:#2d2d2d">${t}</div>`,'background:#fff;border-radius:999px')).join('')+
+ gcols.map((g,i)=>A(660+i*208,296,200,50,`<span style="font-family:var(--serif);font-size:20px">${g[0]}</span> <span style="font-size:20px;color:var(--mute)">${g[1]}</span>`)+L(660+i*208-6,296,1,490)).join('')+
+ [0,1,2,3,4].map(i=>L(640,384+i*82,850,1)).join('')+
+ [[660,230,'#d8d6cc'],[868,330,'#b9cfee'],[868,300,'#b9cfee'],[1076,400,'#cdd9bd'],[1180,300,'#cdd9bd']].map((b,i)=>A(b[0],376+i*82,b[1],8,'','background:'+b[2]+';border-radius:4px')).join('')+
+ A(840,770,170,16,'<span style="font-size:20px;color:#c0392b">&#9650;</span> <span class="t2" style="font-size:20px">1단계 마무리</span>')+
+ A(1250,770,170,16,'<span style="font-size:20px;color:#c0392b">&#9650;</span> <span class="t2" style="font-size:20px">중간 점검</span>')));
+
+/* 19 회사 소개 */
+slides.push(`<section class="sl">
+ <div class="sb" style="width:52px;background:var(--bg)"></div><div class="vt" style="left:22px;top:44px">Company</div>
+ <div class="brand" style="top:98px;right:112px;font-weight:500;font-size:20px">MIRI STUDIO</div>
+ <div class="a" style="left:136px;top:78px;font-size:20px;color:var(--mute)">MIRI STUDIO 소개</div>
+ <div class="a" style="left:136px;top:104px;font-size:29px;line-height:1.4;font-weight:500;letter-spacing:-.8px">MIRI STUDIO는<br>브랜드의 본질을 발견하고<br>소비자와의 진정성 있는 연결을 만드는<br>브랜딩 전문 에이전시입니다.</div>
+ <div class="a" style="left:136px;top:350px;display:flex;gap:14px"><span class="pill g" style="padding:8px 26px;font-weight:500">브랜드 전략 수립</span><span class="pill" style="padding:8px 26px;font-weight:500">VI 디자인</span><span class="pill b" style="padding:8px 26px;font-weight:500">콘텐츠 제작</span></div>
+ ${[0,1,2,3].map(i=>L(136,430+i*90,1464,1)).join('')}
+ <div class="ln" style="left:136px;top:790px;width:1464px;height:1px;background:#bbb7a8"></div>
+ <div class="a" style="left:136px;top:700px;font-size:20px;color:var(--mute)">단위: 억원</div>
+ ${[['15',90,'2020년','var(--beige2)'],['28',150,'2021년','var(--beige2)'],['42',260,'2022년','var(--beige2)'],['65',400,'2023년','var(--green)']].map((b,i)=>`<div class="a" style="left:${900+i*160}px;top:${790-b[1]}px;width:100px;height:${b[1]}px;background:${b[3]};border-radius:50px 50px 0 0"></div><div class="a" style="left:${900+i*160}px;top:${760-b[1]}px;width:100px;text-align:center;font-family:var(--serif);font-size:${i==3?26:20}px">${b[0]}</div><div class="a" style="left:${900+i*160}px;top:808px;width:100px;text-align:center;font-size:20px;color:var(--mute)">${b[2]}</div>`).join('')}
+</section>`);
+
+const stage=document.getElementById('stage');
+stage.innerHTML=slides.join('');
+const els=[...stage.children];
+let cur=0;
+try{cur=Math.min(els.length-1,Math.max(0,(parseInt(location.hash.slice(1))||1)-1))}catch(e){}
+function show(i){cur=Math.max(0,Math.min(els.length-1,i));els.forEach((e,k)=>e.classList.toggle('on',k===cur));try{history.replaceState(null,'','#'+(cur+1))}catch(e){}}
+function fit(){const k=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(${-800*k}px,${-450*k}px) scale(${k})`}
+addEventListener('resize',fit);fit();show(cur);
+addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();show(cur+1)}else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(cur-1)}else if(e.key==='Home')show(0);else if(e.key==='End')show(els.length-1)});
+addEventListener('click',e=>{show(e.clientX>innerWidth/2?cur+1:cur-1)});
+</script>
+</body>
+</html>
